@@ -1,7 +1,10 @@
 package com.app.fitness.controller;
 
+import com.app.fitness.dto.RegisterRequest;
+import com.app.fitness.dto.UserResponse;
 import com.app.fitness.entity.User;
 import com.app.fitness.service.UserService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +20,8 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public User register(@RequestBody User user) {
-        return userService.register(user);
+    public ResponseEntity<UserResponse> register(@RequestBody RegisterRequest registerRequest) {
+        return ResponseEntity.ok(userService.register(registerRequest));
     }
+
 }
